@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block title %}Generate QR{% endblock %} {% block
+body %}
+<div class="container">
+  <h1 align="center">QR Code Generator</h1>
+  <br />
+  <form class="form-group" action="/converted" method="post">
+    <input
+      type="text"
+      name="fullname"
+      class="form-control"
+      placeholder="Enter Name"
+      required="required"
+    />
+    <br />
+    <button type="submit" class="btn btn-primary btn-block btn-large">
+      Generate QR
+    </button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% block title %}Records{% endblock %} {% block body
+%} {% if records %}
+<div class="container">
+  <center>
+    <h3>All Records</h3>
+    <hr />
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Time-In</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for row in records %}
+        <tr>
+          <td>{{row.name}}</td>
+          <td>{{row.time}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </center>
+</div>
+{% endif %} {% endblock %}

@@ -1,0 +1,56 @@
+{% extends "base.html" %} {% block title %}Mark Attendance{% endblock %} {%
+block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <video id="preview" width="100%"></video>
+    </div>
+    <div class="col-md-6">
+      <form action="/attendance" method="post" class="form-horizontal">
+        <label>Attendee</label>
+        <input
+          type="text"
+          name="text"
+          id="text"
+          readonyy=""
+          class="form-control"
+        />
+        <div>
+          <div>
+            <button
+              href="/attendance"
+              type="submit"
+              name="Details"
+              class="btn btn-default"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block script %}
+<script>
+  let scanner = new Instascan.Scanner({
+    video: document.getElementById("preview"),
+  });
+  Instascan.Camera.getCameras()
+    .then(function (cameras) {
+      if (cameras.length > 0) {
+        scanner.start(cameras[0]);
+      } else {
+        alert("No cameras found");
+      }
+    })
+    .catch(function (e) {
+      console.error(e);
+    });
+
+  scanner.addListener("scan", function (c) {
+    document.getElementById("text").value = c;
+    documeny.form[0].submit();
+  });
+</script>
+{% endblock %}

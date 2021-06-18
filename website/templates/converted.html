@@ -1,0 +1,10 @@
+{% extends "base.html" %} {% block title %}Generate QR{% endblock %} {% block
+body %}
+<div class="container">
+  <form action="/download" method="get">
+    <p>Successfully converted</p>
+    <p>Download your file from here!</p>
+    <button class="btn"><i class="fa fa-download"></i> Download</button>
+  </form>
+</div>
+{% endblock %}
