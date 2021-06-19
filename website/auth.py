@@ -7,7 +7,6 @@ from . import db
 from flask_login import login_user, login_required, logout_user, current_user
 import os
 import cv2
-import pyzbar.pyzbar as pyzbar
 
 
 auth = Blueprint('auth', __name__)
@@ -97,6 +96,8 @@ def attendance():
         fullname = Scanned.query.filter_by(name=text).first()
         if fullname:
             flash('Already Present', category='Error')
+        elif text == '':
+            flash('First Scan the QR Code', category='Error')
         else:
             new_data = Scanned(name=text)
             db.session.add(new_data)
